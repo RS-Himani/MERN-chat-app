@@ -3,7 +3,7 @@ import React, { memo } from "react";
 import { lightBlue } from "../../constants/color";
 import moment from "moment";
 import { fileFormat } from "../../libs/features";
-import RenderAttachement from "./RenderAttachement";
+import RenderAttachement from "./RenderAttachment";
 import { motion } from "framer-motion";
 
 const MessageComponent = ({ message, user }) => {

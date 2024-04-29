@@ -2,7 +2,7 @@ import React from 'react';
 import { transformImage } from '../../libs/features';
 import { FileOpen as FileOpenIcon } from '@mui/icons-material';
 
-const RenderAttachement = (file, url) => {
+const RenderAttachment = (file, url) => {
   
   switch (file) {
     case "video":
@@ -19,7 +19,7 @@ const RenderAttachement = (file, url) => {
         return (
           <img 
             src={transformImage(url, 200)} 
-            alt="Attachement" 
+            alt="Attachment" 
             width={"200px"} 
             height={"150px"}
             style={{
@@ -43,4 +43,4 @@ const RenderAttachement = (file, url) => {
   }
 }
 
-export default RenderAttachement;
+export default RenderAttachment;

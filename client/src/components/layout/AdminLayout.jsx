@@ -19,6 +19,7 @@ import { Close as CloseIcon,
 import { useLocation, Link as LinkComponent, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import { adminLogout } from '../../redux/thunks/admin';
 
 
 const Link = styled(LinkComponent)`
