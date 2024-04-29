@@ -1,13 +1,13 @@
 import { useFetchData } from "6pp";
-import { Avatar, Box, Skeleton, Stack } from "@mui/material";
+import { Avatar, Box, Stack } from "@mui/material";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import AdminLayout from "../../components/layout/AdminLayout";
+import RenderAttachment from "../../components/shared/RenderAttachment";
 import Table from "../../components/shared/Table";
 import { server } from "../../constants/config";
 import { useErrors } from "../../hooks/hook";
 import { fileFormat, transformImage } from "../../libs/features";
-import RenderAttachment from "../../components/shared/RenderAttachment";
 
 const columns = [
   {
@@ -100,7 +100,7 @@ const MessageManagement = () => {
   ]);
 
   const [rows, setRows] = useState([]);
-  //console.log("Data: ", data);
+
   useEffect(() => {
     if (data) {
       setRows(
