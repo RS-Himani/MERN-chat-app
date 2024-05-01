@@ -114,7 +114,7 @@ io.on("connection", (socket) => {
       message: messageForRealTime,
     });
     io.to(membersSocket).emit(NEW_MESSAGE_ALERT, { chatId });
-    console.log("MemberSocket", membersSocket);
+    //console.log("MemberSocket", membersSocket, "and New_Message_Alert: ", NEW_MESSAGE_ALERT);
 
     try {
       await Message.create(messageForDB);

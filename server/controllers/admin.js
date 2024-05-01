@@ -9,8 +9,7 @@ import { adminSecretKey } from "../app.js";
 
 const adminLogin = TryCatch(async (req, res, next) => {
   const { secretKey } = req.body;
-  //console.log("SecretKey : ",secretKey);
-  
+
   const isMatched = secretKey === adminSecretKey;
 
   if (!isMatched) return next(new ErrorHandler("Invalid Admin Key", 401));
@@ -115,27 +114,43 @@ const allMessages = TryCatch(async (req, res) => {
     .populate("sender", "name avatar")
     .populate("chat", "groupChat");
 
-  const transformedMessages = messages.map(
-    ({ content, attachments, _id, sender, createdAt, chat }) => ({
+  //console.log(messages); // Check if messages are retrieved correctly
+
+  const transformedMessages = messages.map(({ _id, content, attachments, sender, createdAt, chat }) => {
+    // Ensure that _id, sender, and chat are not null or undefined
+    if (!_id || !sender || !chat) {
+      //console.error("Message is missing _id, sender, or chat:", { _id, sender, chat });
+      return null; // Skip this message
+    }
+
+    // Ensure that sender.avatar exists before accessing its url property
+    const senderAvatar = sender.avatar && sender.avatar.url ? sender.avatar.url : null;
+
+    return {
       _id,
       attachments,
       content,
       createdAt,
-      chat: chat._id,
-      groupChat: chat.groupChat,
+      chat: chat._id, // Assuming chat._id exists
+      groupChat: chat.groupChat, // Assuming chat.groupChat exists
       sender: {
         _id: sender._id,
         name: sender.name,
-        avatar: sender.avatar.url,
+        avatar: senderAvatar,
       },
-    })
-  );
+    };
+  }).filter(Boolean); // Remove any null entries
+
+  //console.log(transformedMessages); // Check transformed messages
 
   return res.status(200).json({
     success: true,
     messages: transformedMessages,
   });
 });
+
+
+
 
 const getDashboardStats = TryCatch(async (req, res) => {
   const [groupsCount, usersCount, messagesCount, totalChatsCount] =

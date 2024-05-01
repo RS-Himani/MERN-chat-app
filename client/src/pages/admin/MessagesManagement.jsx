@@ -1,5 +1,5 @@
 import { useFetchData } from "6pp";
-import { Avatar, Box, Stack } from "@mui/material";
+import { Avatar, Box, Skeleton, Stack } from "@mui/material";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import AdminLayout from "../../components/layout/AdminLayout";
@@ -91,7 +91,7 @@ const MessageManagement = () => {
     `${server}/api/v1/admin/messages`,
     "dashboard-messages"
   );
-
+  
   useErrors([
     {
       isError: error,
@@ -100,7 +100,7 @@ const MessageManagement = () => {
   ]);
 
   const [rows, setRows] = useState([]);
-
+  
   useEffect(() => {
     if (data) {
       setRows(
@@ -108,8 +108,8 @@ const MessageManagement = () => {
           ...i,
           id: i._id,
           sender: {
-            name: i.sender.name,
             avatar: transformImage(i.sender.avatar, 50),
+            name: i.sender.name,
           },
           createdAt: moment(i.createdAt).format("MMMM Do YYYY, h:mm:ss a"),
         }))

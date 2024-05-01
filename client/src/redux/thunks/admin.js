@@ -28,7 +28,7 @@ const getAdmin = createAsyncThunk("admin/getAdmin", async () => {
     const { data } = await axios.get(`${server}/api/v1/admin/`, {
       withCredentials: true,
     });
-
+    
     return data.admin;
   } catch (error) {
     throw error.response.data.message;
