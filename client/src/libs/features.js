@@ -1,4 +1,5 @@
 import moment from "moment";
+import { NEW_MESSAGE_ALERT } from "../constants/events";
 
 const fileFormat = (url = "") => {
     const fileExt = url.split(".").pop();
@@ -41,11 +42,11 @@ const getLast70days = () => {
 };
 
 const getOrSaveFromStorage = ({ key, value, get }) => {
-    if (get)
-      return localStorage.getItem(key)
-        ? JSON.parse(localStorage.getItem(key))
-        : null;
-    else localStorage.setItem(key, JSON.stringify(value));
+    if (get) {
+      return localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key)) : null;
+    } else {
+      localStorage.setItem(NEW_MESSAGE_ALERT, JSON.stringify(value));
+    }
   };
-
+  
 export { fileFormat, transformImage, getLast70days, getOrSaveFromStorage };

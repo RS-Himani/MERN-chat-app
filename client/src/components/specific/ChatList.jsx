@@ -27,17 +27,17 @@ handleDeleteChat,
         );
 
         return <ChatItem 
-            index={index}
-            newMessageAlert={newMessageAlert} 
-            isOnline={isOnline} 
-            avatar={avatar}
-            name={name}
-            _id={_id}
-            key={_id}
-            groupChat={groupChat}
-            sameSender={chatId === _id}
-            handleDeleteChat={handleDeleteChat}
-            />
+          index={index}
+          newMessageAlert={newMessageAlert} 
+          isOnline={isOnline} 
+          avatar={avatar}
+          name={name}
+          _id={_id}
+          key={_id}
+          groupChat={groupChat}
+          sameSender={chatId === _id}
+          handleDeleteChat={handleDeleteChat}
+          />
       })}
     </Stack>
   );

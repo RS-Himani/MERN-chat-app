@@ -18,7 +18,6 @@ const registerValidator = () => [
   body("username", "Please Enter Username").notEmpty(),
   body("bio", "Please Enter Bio").notEmpty(),
   body("password", "Please Enter Password").notEmpty(),
- 
 ];
 
 const loginValidator = () => [

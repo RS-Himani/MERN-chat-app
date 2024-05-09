@@ -25,9 +25,6 @@ import { socketAuthenticator } from "./middlewares/auth.js";
 import userRoute from "./routes/user.js";
 import chatRoute from "./routes/chat.js";
 import adminRoute from "./routes/admin.js";
-//import { createMessagesInAChat } from "./seeders/chat.js";
-//import { createGroupChats, createSingleChats } from "./seeders/chat.js";
-// import { createUser } from "./seeders/user.js";
 
 dotenv.config({
   path: "./.env",
@@ -36,7 +33,7 @@ dotenv.config({
 const mongoURI = process.env.MONGO_URI;
 const port = process.env.PORT || 3000;
 const envMode = process.env.NODE_ENV.trim() || "PRODUCTION";
-const adminSecretKey = process.env.ADMIN_SECRET_KEY || "demoAdminSecreteKey";
+const adminSecretKey = process.env.ADMIN_SECRET_KEY || "demoAdminSecretKey";
 const userSocketIDs = new Map();
 const onlineUsers = new Set();
 
@@ -47,13 +44,6 @@ cloudinary.config({
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
-
-//For creating fake users and chats
-// createUser(10);
-//createSingleChats(10);
-//createGroupChats(10);
-//createMessagesInAChat("66165a99f6052a3ae7014daf", 50);
-
 
 const app = express();
 const server = createServer(app);
@@ -87,7 +77,7 @@ io.use((socket, next) => {
 io.on("connection", (socket) => {
   const user = socket.user;
   userSocketIDs.set(user._id.toString(), socket.id);
-  console.log("a user connected: ",userSocketIDs);
+  console.log("a user connected ", userSocketIDs);
 
   socket.on(NEW_MESSAGE, async ({ chatId, members, message }) => {
     const messageForRealTime = {
@@ -107,14 +97,14 @@ io.on("connection", (socket) => {
       chat: chatId,
     };
 
-    console.log("Emiting : ", messageForRealTime);
     const membersSocket = getSockets(members);
+    console.log("Members: ", members, "and content is: ",message);
     io.to(membersSocket).emit(NEW_MESSAGE, {
       chatId,
       message: messageForRealTime,
     });
     io.to(membersSocket).emit(NEW_MESSAGE_ALERT, { chatId });
-    //console.log("MemberSocket", membersSocket, "and New_Message_Alert: ", NEW_MESSAGE_ALERT);
+    console.log("MemberSocket: ",membersSocket);
 
     try {
       await Message.create(messageForDB);
@@ -146,7 +136,7 @@ io.on("connection", (socket) => {
     const membersSocket = getSockets(members);
     io.to(membersSocket).emit(ONLINE_USERS, Array.from(onlineUsers));
   });
-    
+
   socket.on("disconnect", () => {
     userSocketIDs.delete(user._id.toString());
     onlineUsers.delete(user._id.toString());
@@ -160,8 +150,4 @@ server.listen(port, () => {
   console.log(`Server is running on port ${port} in ${envMode} Mode`);
 });
 
-export { 
-  envMode, 
-  adminSecretKey, 
-  userSocketIDs 
-};
+export { envMode, adminSecretKey, userSocketIDs };

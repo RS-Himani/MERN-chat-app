@@ -1,4 +1,3 @@
-
 const corsOptions = {
   origin: [
     "http://localhost:5173",
@@ -9,6 +8,6 @@ const corsOptions = {
   credentials: true,
 };
 
-const  CHAT_APP_TOKEN = "Chat-app-token";
+const CHAT_APP_TOKEN = "Chat-app-token";
 
 export { corsOptions, CHAT_APP_TOKEN };

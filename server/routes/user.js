@@ -5,7 +5,7 @@ import {
   getMyNotifications,
   getMyProfile,
   login,
-  logOut,
+  logout,
   newUser,
   searchUser,
   sendFriendRequest,
@@ -31,7 +31,7 @@ app.use(isAuthenticated);
 
 app.get("/me", getMyProfile);
 
-app.get("/logout", logOut);
+app.get("/logout", logout);
 
 app.get("/search", searchUser);
 

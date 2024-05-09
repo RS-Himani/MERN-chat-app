@@ -8,7 +8,7 @@ const initialState = {
   // getOrSaveFromStorage({
   //   key: NEW_MESSAGE_ALERT,
   //   get: true,
-  // }) || 
+  // }) ||
   [
     {
       chatId: "",
@@ -60,3 +60,4 @@ export const {
   setNewMessagesAlert,
   removeNewMessagesAlert,
 } = chatSlice.actions;
+
