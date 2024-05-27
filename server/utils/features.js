@@ -22,14 +22,16 @@ const connectDB = (uri) => {
 
 const sendToken = (res, user, code, message) => {
   const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
-  //res.set("Chat-app-token", token, cookieOptions);
-  //sessionStorage.setItem("Chat-app-token", token, cookieOptions);
-  
-  return res.status(code).cookie("Chat-app-token", token, cookieOptions).json({
+
+  return res.status(code)
+  .cookie("Chat-app-token", token, cookieOptions)
+  .json({
     success: true,
     user,
     message,
+    token,
   });
+  
 };
 
 const emitEvent = (req, event, users, data) => {

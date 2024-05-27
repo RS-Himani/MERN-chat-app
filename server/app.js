@@ -66,6 +66,7 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
+
 io.use((socket, next) => {
   cookieParser()(
     socket.request,
@@ -103,8 +104,8 @@ io.on("connection", (socket) => {
       chatId,
       message: messageForRealTime,
     });
-    // io.to(membersSocket).emit(NEW_MESSAGE_ALERT, { chatId });
-    // console.log("MemberSocket: ",membersSocket);
+    io.to(membersSocket).emit(NEW_MESSAGE_ALERT, { chatId });
+    console.log("MemberSocket: ",membersSocket);
 
     try {
       await Message.create(messageForDB);
