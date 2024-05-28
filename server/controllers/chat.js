@@ -45,6 +45,7 @@ const getMyChats = TryCatch(async (req, res, next) => {
 
   const transformedChats = chats.map(({ _id, name, members, groupChat }) => {
     const otherMember = getOtherMember(members, req.user);
+    //console.log("Other Members: ", otherMember);
     
     return {
       _id,

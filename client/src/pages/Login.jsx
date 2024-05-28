@@ -75,11 +75,12 @@ const Login = () => {
         },
         config
       );
-      console.log("Data : ", data)
+    //console.log("Data : ", data)
       dispatch(userExists(data.user));
       toast.success(data.message, {
         id: toastId,
       });
+      //sessionStorage.setItem("userToken", JSON.stringify(data.token));
     } catch (error) {
       toast.error(error?.response?.data?.message || "Something Went Wrong", {
         id: toastId,
@@ -120,6 +121,7 @@ const Login = () => {
       toast.success(data.message, {
         id: toastId,
       });
+      //localStorage.setItem("userToken", JSON.stringify(data.token));
     } catch (error) {
       toast.error(error?.response?.data?.message || "Something Went Wrong", {
         id: toastId,
