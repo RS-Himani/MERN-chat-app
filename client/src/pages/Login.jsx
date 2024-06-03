@@ -80,7 +80,7 @@ const Login = () => {
       toast.success(data.message, {
         id: toastId,
       });
-      //sessionStorage.setItem("userToken", JSON.stringify(data.token));
+      //localStorage.setItem("userToken", JSON.stringify(data.token));
     } catch (error) {
       toast.error(error?.response?.data?.message || "Something Went Wrong", {
         id: toastId,

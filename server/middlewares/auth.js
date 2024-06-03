@@ -5,7 +5,7 @@ import { TryCatch } from "./error.js";
 import { CHAT_APP_TOKEN } from "../constants/config.js";
 import { User } from "../models/user.js";
 
-const isAuthenticated = TryCatch((req, res, next) => {
+const isAuthenticated = (req, res, next) => {
     
   const token = req.cookies[CHAT_APP_TOKEN];
   if (!token)
@@ -16,7 +16,7 @@ const isAuthenticated = TryCatch((req, res, next) => {
   req.user = decodedData._id;
 
   next();
-});
+};
 
 const adminOnly = (req, res, next) => {
   const token = req.cookies["chat-app-admin-token"];

@@ -1,0 +1,10 @@
+for multiple users login simultaneously :- comment out isAuthenticated in user.js in route folder
+and after that for sending request and create or manage group :- uncomment isAuthenticated
+
+sendgrid :- 
+    Account email :- himani.bhatt@rishabhsoft.com
+    Account username :- himani.bhatt@rishabhsoft.com
+    Account ID :- sg3783a532213052a1925e34c463439eb3
+    AIP Key Name :- Chat App
+    API Key ID :- wpkW29bWTbST3Q5bDMZgGw
+    API Key :- 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

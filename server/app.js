@@ -17,6 +17,8 @@ import {
   START_TYPING,
   STOP_TYPING,
 } from "./constants/events.js";
+//import { createUser } from "./seeders/user.js";
+//import { createGroupChats, createMessages, createMessagesInAChat, createSingleChats, } from "./seeders/chat.js";
 import { getSockets } from "./lib/helper.js";
 import { Message } from "./models/message.js";
 import { corsOptions } from "./constants/config.js";
@@ -38,6 +40,12 @@ const userSocketIDs = new Map();
 const onlineUsers = new Set();
 
 connectDB(mongoURI);
+
+//createUser(10);
+// createGroupChats(10);
+// createMessages(10);
+// createMessagesInAChat(chatId,10);
+// createSingleChats(10);
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -99,13 +107,13 @@ io.on("connection", (socket) => {
     };
 
     const membersSocket = getSockets(members);
-    console.log("Members: ", members, "and content is: ",message);
+    //console.log("Members: ", members, "and content is: ",message);
     io.to(membersSocket).emit(NEW_MESSAGE, {
       chatId,
       message: messageForRealTime,
     });
     io.to(membersSocket).emit(NEW_MESSAGE_ALERT, { chatId });
-    console.log("MemberSocket: ",membersSocket);
+    //console.log("MemberSocket: ",membersSocket);
 
     try {
       await Message.create(messageForDB);

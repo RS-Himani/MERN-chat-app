@@ -3,7 +3,8 @@ import React from 'react';
 import { 
   Face as FaceIcon,
   AlternateEmail as UsernameIcon,
-  CalendarMonth as CalenderIcon
+  CalendarMonth as CalenderIcon,
+  MailOutline as EmailIcon
 } from '@mui/icons-material';
 import moment from 'moment';
 import { transformImage } from '../../libs/features';
@@ -25,6 +26,7 @@ const Profile = ({ user }) => {
       <ProfileCard heading={"Bio"} text={user?.bio} />
       <ProfileCard heading={"Username"} text={user?.username} Icon={<UsernameIcon />}/>
       <ProfileCard heading={"Name"} text={user?.name}  Icon={<FaceIcon />}/>
+      <ProfileCard heading={"Email"} Icon={<EmailIcon />} />
       <ProfileCard heading={"Joined"} text={moment(user?.createdAt).fromNow()}  Icon={<CalenderIcon />}/>
     </Stack>
   );
