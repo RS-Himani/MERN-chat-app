@@ -13,7 +13,7 @@ import { CameraAlt as CameraAltIcon } from'@mui/icons-material';
 import { VisuallyHiddenInput } from '../components/styles/StyledComponents';
 import { useFileHandler, useInputValidation, useStrongPassword } from '6pp';
 import { userNameValidator } from '../utils/validators';
-import { blue } from '../constants/color';
+import {  bgImage, blue } from '../constants/color';
 import axios from "axios";
 import { server } from "../constants/config";
 import { userExists } from "../redux/reducers/auth";
@@ -134,8 +134,10 @@ const Login = () => {
     return (
         <div
             style={{
-                backgroundImage:
-                    blue
+                backgroundImage:blue
+                //     `url(${bgImage})`,
+                // backgroundSize: "cover",
+                // backgroundRepeat: "no-repeat",
             }}
         >
             <Container 
@@ -145,7 +147,7 @@ const Login = () => {
                     height: "100vh",
                     display: "flex",
                     justifyContent: "center",
-                    alignItems: "center"
+                    alignItems: "center",
                 }}
             >
                 <motion.div

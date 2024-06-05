@@ -10,7 +10,7 @@ import {
     Typography,
 } from '@mui/material';
 import { useDispatch, useSelector } from "react-redux";
-import { blue } from '../../constants/color';
+import { bgImage, blue } from '../../constants/color';
 import { useInputValidation } from '6pp';
 import { Navigate } from 'react-router-dom';
 import { adminLogin, getAdmin } from "../../redux/thunks/admin";
@@ -50,8 +50,11 @@ const AdminLogin = () => {
     return (
         <div
             style={{
-                backgroundImage:
-                    blue
+                backgroundImage: blue
+                    //     `url(${bgImage})`,
+                // backgroundSize: "cover",
+                // backgroundRepeat: "no-repeat",
+
             }}
         >
             <Container 

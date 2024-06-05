@@ -17,6 +17,7 @@ import { Add as AddIcon,
     Logout as LogoutIcon,
     Notifications as NotificationsIcon
 } from '@mui/icons-material';
+import ChatIcon from '@mui/icons-material/Chat';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { server } from "../../constants/config";
@@ -93,7 +94,8 @@ const Header = () => {
                     }}
                 >
                     <IconButton color='inherit' onClick={handleMobile}>
-                        <MenuIcon />
+                        {/* <MenuIcon /> */}
+                        <ChatIcon />
                     </IconButton>
                 </Box>
                 <Box 
