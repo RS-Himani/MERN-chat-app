@@ -1,2 +1,2 @@
 for multiple users login simultaneously :- comment out isAuthenticated in user.js in route folder
-and after that for sending request and create or manage group :- uncomment isAuthenticated
+and after that for sending request and create or manage group :- uncomment isAuthenticated in user.js in router folder

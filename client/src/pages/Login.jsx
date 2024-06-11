@@ -155,7 +155,7 @@ const Login = () => {
                    whileInView={{ opacity: 1, y: 0 }}
                    transition={{ delay: 0.3 }}
                 >
-                <Paper elevation={3}
+                <Paper elevation={20}
                 sx={{
                     padding: 4,
                     display: "flex",
@@ -224,10 +224,11 @@ const Login = () => {
                                 <Button
                                     sx={{
                                         marginTop: '1rem',
+                                        backgroundImage:blue
                                     }}
                                     type='submit'
                                     variant='contained'
-                                    color='primary'
+                                    //color='primary'
                                     fullWidth
                                     disabled={isLoading}
                                 >

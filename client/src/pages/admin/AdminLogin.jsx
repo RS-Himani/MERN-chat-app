@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { 
+    Box,
     Avatar, 
     Button, 
     Container, 
@@ -48,13 +49,13 @@ const AdminLogin = () => {
     if (isAdmin) return <Navigate to="/admin/dashboard" />;
 
     return (
-        <div
-            style={{
-                backgroundImage: blue
+        <Box
+            sx={{
+                backgroundImage: blue,
                     //     `url(${bgImage})`,
                 // backgroundSize: "cover",
                 // backgroundRepeat: "no-repeat",
-
+                //justifyContent:"flex-start"
             }}
         >
             <Container 
@@ -64,10 +65,12 @@ const AdminLogin = () => {
                     height: "100vh",
                     display: "flex",
                     justifyContent: "center",
-                    alignItems: "center"
+                    alignItems: "center",
+                    //marginLeft:"0",
+                    //paddingLeft:"0"
                 }}
             >
-                <Paper elevation={3}
+                <Paper elevation={20}
                 sx={{
                     padding: 4,
                     display: "flex",
@@ -125,10 +128,11 @@ const AdminLogin = () => {
                     <Button
                         sx={{
                             marginTop: '1rem',
+                            backgroundImage:blue
                         }}
                         type='submit'
                         variant='contained'
-                        color='primary'
+                        //color='primary'
                         fullWidth
                     >
                         Login
@@ -137,7 +141,7 @@ const AdminLogin = () => {
                         
                 </Paper>
             </Container>
-        </div>
+        </Box>
     );
 }
 

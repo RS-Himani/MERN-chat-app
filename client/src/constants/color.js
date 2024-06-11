@@ -5,7 +5,7 @@
 //export const blue = "linear-gradient(rgba(200,200,200,0.5),rgba(120,110,220,0.5))";
 export const blue = "linear-gradient(rgba(200,197,233,0.5),rgba(120,110,220,0.5))"; 
 export const blueLight = "rgba(100, 173, 245,0.85)"
-export const bgImage = "../../img/image15.jpg"
+export const bgImage = "../../img/image3.jpg"
 
 
 //common
