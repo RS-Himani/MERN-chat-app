@@ -190,7 +190,7 @@ const Chat = ({ chatId, user }) => {
         sx={{
           overflowX:"hidden",
           overflowY:"auto",
-          backgroundImage: blue
+          //backgroundImage: blue
         }}
       >
         {allMessages.map((i) => (
